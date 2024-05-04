@@ -1,15 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./login.css"
+import {auth} from '../firebase';
+import React, {signInWithEmailAndPassword} from 'firebase/auth';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Perform login logic here, for example using Firebase signInWithEmailAndPassword
-    // Once logged in successfully, you can navigate to another page
-    navigate('/weather');
+  const handleLogin = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user=userCredential.user;
+      navigate("/weather");
+      console.log("Clicked");
+    })
+    .catch((error) => {
+      const errorCode=error.code;
+      const errorMessage=error.message;
+      console.log(errorCode, errorMessage);
+    });
   };
 
   return (

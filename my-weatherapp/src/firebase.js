@@ -1,19 +1,23 @@
 
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import {getFirestore} from 'firebase/firestore'
+
+
 
 
 const firebaseConfig = {
-  apiKey: "679edc4ad8be4de8e0a15ea088c2b3e7",
-  authDomain: "weather-app-e3d6d.firebaseapp.com",
-  projectId: "weather-app-e3d6d",
-  storageBucket: "weather-app-e3d6d.appspot.com",
-  messagingSenderId: "1067628796614",
-  appId: "1:1067628796614:web:6a60d66e901866b368d5c7",
-  measurementId: "G-4044F58XCX"
+  apiKey: "AIzaSyA7XE4kDifQnHQNAdlsunNg5hiGx9LDe9o",
+  authDomain: "weather-app-2-a8bf7.firebaseapp.com",
+  projectId: "weather-app-2-a8bf7",
+  storageBucket: "weather-app-2-a8bf7.appspot.com",
+  messagingSenderId: "577447497759",
+  appId: "1:577447497759:web:846debbf405553ac39c52a",
+  measurementId: "G-6KFRFP6FV7"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider=new GoogleAuthProvider();
+export const db=getFirestore(app);
